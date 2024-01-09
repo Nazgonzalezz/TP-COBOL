@@ -300,7 +300,7 @@
                WHEN 010
                    MOVE "error en el mes ingresado"        TO retorn-txt
                WHEN 002
-                   MOVE "opcion invalida"                  to retorn-txt
+                   MOVE "opcion invalida"                  TO retorn-txt
            END-EVALUATE.
 
       *-----------------------------------------------------------------
