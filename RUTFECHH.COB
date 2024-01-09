@@ -279,8 +279,8 @@
            END-EVALUATE.
 
       *-----------------------------------------------------------------
-       4000-REVISAR-SI-HAY-ERROR.
 
+       4000-REVISAR-SI-HAY-ERROR.
            EVALUATE retorn-num
                WHEN 002
                    MOVE "la opcion ingresada es invalida"  TO retorn-txt
