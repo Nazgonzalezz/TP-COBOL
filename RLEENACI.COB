@@ -24,28 +24,28 @@
                 05 descripNacion         PIC X(20).
 
        WORKING-STORAGE SECTION.
-       77  flag                          PIC X           VALUE "N".
-       77  cont                          PIC 9           VALUE 1.
+       77  flag                          PIC X         VALUE "N".
+       77  cont                          PIC 9         VALUE 1.
        01  WSS-REG-NAC.
                 05 wss-codigNacion       PIC X(3).
                 05 wss-descripNacion     PIC X(20).
 
        01  wss-fs-nac                    PIC X(2).
-           88 wss-fs-nac-OK                              VALUE '00'.
-           88 wss-fs-nac-EOF                             VALUE '10'.
+           88 wss-fs-nac-OK                           VALUE '00'.
+           88 wss-fs-nac-EOF                          VALUE '10'.
 
        01  VECTOR-NACIONALIDADES  OCCURS 10 TIMES.
            05 vec-codigNacion            PIC X(3).
            05 vec-descripNacion          PIC X(20).
 
        01  WS-IND                        PIC 9(2) COMP.
-          01  SW-INDICADOR               PIC X           VALUE SPACES.
-                 88 NO-ENCONTRADO                        VALUE "N".
-                  88 ENCONTRADO                          VALUE "S".
+          01  SW-INDICADOR               PIC X        VALUE SPACES.
+                 88 NO-ENCONTRADO                     VALUE "N".
+                  88 ENCONTRADO                       VALUE "S".
        01  MENU.
-           05 FILLER                     PIC X(8)   VALUE "CODIGO: ".
+           05 FILLER                     PIC X(8)     VALUE "CODIGO: ".
            05 codi-menu                  PIC X(3).
-           05 FILLER                     PIC X(15)       VALUE
+           05 FILLER                     PIC X(15)    VALUE
            " DESCRIPCION: ".
            05 descripNacion-menu         PIC X(20).
 
