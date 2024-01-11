@@ -47,7 +47,7 @@
       */////////////////////////////////////////////////////////////////
 
        1000-ABRIR-ARCHIVO.
-           OPEN OUTPUT  ARCH-NAC.
+           OPEN OUTPUT  ARCH-NAC
            IF NOT wss-fs-nac-OK then
                display "error al abrir el archivo"
            END-IF.
@@ -95,7 +95,7 @@
       *-----------------------------------------------------------------
 
        4000-CERRAR-ARCHIVO.
-           CLOSE ARCH-NAC.
+           CLOSE ARCH-NAC
            IF NOT wss-fs-nac-OK then
                display "error al  cerrar el archivo"
            END-IF.
