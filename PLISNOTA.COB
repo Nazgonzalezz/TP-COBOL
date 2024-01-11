@@ -167,7 +167,6 @@
       *-----------------------------------------------------------------
 
        4000-CORTES-DE-CONTROL.
-
            MOVE 'N' TO fin
            READ ARCH-NOT AT END MOVE 'S' TO fin
            END-READ
