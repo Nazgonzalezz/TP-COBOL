@@ -1,7 +1,10 @@
       ******************************************************************
       * Author: Gonzalez Nazarena Araceli
       * Date:
-      * Purpose:
+      * Purpose:Rutina de fechas que brinda tres opciones: 
+      *        1)pide el ingreso de una fecha por teclado y la formatea
+      *        2)recibe una fecha por la LINKAGE SECTION y la formatea
+      *        3) pide el ingreso de un anio y un mes por teclado
       * Tectonics: cobc
       ******************************************************************
        IDENTIFICATION DIVISION.
