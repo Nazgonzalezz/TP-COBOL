@@ -1,6 +1,5 @@
       ******************************************************************
       * Author: Gonzalez Nazarena Araceli
-      * Date:
       * Purpose:Rutina de fechas que brinda tres opciones: 
       *        1)pide el ingreso de una fecha por teclado y la formatea
       *        2)recibe una fecha por la LINKAGE SECTION y la formatea
@@ -199,6 +198,8 @@
                MOVE anioo to anio
                MOVE diaa  to dia
                PERFORM 1400-QUE-MES-ES
+           ELSE 
+               move 0 to flag
            END-IF.
 
       *----------------------------------------------------------------
