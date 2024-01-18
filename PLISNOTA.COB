@@ -1,6 +1,5 @@
       ******************************************************************
       * Author:Gonzalez Nazarena Araceli
-      * Date:
       * Purpose:Programa que lee el archivo "NOTAS.DAT" y saca el
       *    promedio de las notas de cada materia de cada alumno
       *    utilizando cortes de control
