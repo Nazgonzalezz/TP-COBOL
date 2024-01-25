@@ -197,7 +197,7 @@
                MOVE mess  to mes
                MOVE anioo to anio
                MOVE diaa  to dia
-               PERFORM 1400-QUE-MES-ES
+      *        PERFORM 1400-QUE-MES-ES
            ELSE 
                move 0 to flag
            END-IF.
