@@ -1,0 +1,47 @@
+//JOB00303 JOB REGION=0M,CLASS=A,MSGCLASS=A,NOTIFY=&SYSUID
+//*        ,TYPRUN=SCAN
+//*----------------------------------------------------------
+//PASO01   EXEC PGM=SORT
+//SYSOUT   DD SYSOUT=*
+//*
+//SORTIN   DD DSN=FILE.NOTAS,DISP=SHR
+//SORTOUT  DD DSN=&&AUX,
+//         DISP=(NEW,CATLG,DELETE),
+//         DCB=(RECFM=FB,LRECL=16,BLKSIZE=0,DSORG=PS),
+//         SPACE=(TRK,(1,1),RLSE) 
+//*
+//SYSIN    DD *
+      SORT FIELDS=COPY
+      OUTREC FIELDS=(C'AA00000000000001')
+      END
+/*
+//*----------------------------------------------------------
+//PASO02   EXEC PGM=SORT
+//SYSOUT   DD SYSOUT=*
+//*
+//SORTIN   DD DSN=&&AUX,DISP=SHR
+//SORTOUT  DD DSN=NUMBER.OF.RECORDS.NOTAS,
+//         DISP=(NEW,CATLG,DELETE),
+//         DCB=(RECFM=FB,LRECL=14,BLKSIZE=0,DSORG=PS),
+//         SPACE=(TRK,(1,1),RLSE) 
+//*
+//SYSIN    DD *
+      SORT FIELDS=(1,2,CH,A)
+      SUM FIELDS=(3,14),FORMAT=ZD
+      OPTION ZDPRINT
+      OUTREC FIELDS(3,14)
+      END
+/*
+//*----------------------------------------------------------
+//PASO03   EXEC PGM=IDCAMS
+//SYSPRINT DD SYSOUT=*
+//SYSOUT   DD SYSOUT=*
+//*
+//INPUT    DD DSN=NUMBER.OF.RECORDS.NOTAS,DISP=SHR
+//OUTPUT   DD SYSOUT=A,DEST=TR009
+//*
+//SYSIN    DD *
+    REPRO INFILE(INPUT) -
+          OUTFILE(OUTPUT)
+/*
+//
