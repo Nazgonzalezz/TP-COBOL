@@ -1,5 +1,6 @@
       ******************************************************************
       * Author:Gonzalez Nazarena Araceli
+      * Date:12/2023
       * Purpose:Programa que lee el archivo "NOTAS.DAT" y saca el
       *    promedio de las notas de cada materia de cada alumno
       *    utilizando cortes de control
@@ -68,6 +69,7 @@
            05 FILLER                 PIC X(55) VALUE
            "                      PROMEDIO                   *".
 
+
        01  TITULO-ANIO.
            05 FILLER                  PIC X(55) VALUE
            "                                             DESDE ".
@@ -133,7 +135,7 @@
            PERFORM 3000-CARGAR-VEC-DE-RUTINAS
            PERFORM 4000-CORTES-DE-CONTROL
            PERFORM 5000-CERRAR-ARCH
-       STOP RUN.
+           PERFORM 6000-CERRAR-PROGRAMA.
 
       */////////////////////////////////////////////////////////////////
 
@@ -141,6 +143,7 @@
            OPEN INPUT  ARCH-NOT
            IF NOT wss-fs-not-OK then
                display "error al abrir el archivo"
+               PERFORM 6000-CERRAR-PROGRAMA
            END-IF.
 
       *-----------------------------------------------------------------
@@ -166,6 +169,7 @@
       *-----------------------------------------------------------------
 
        4000-CORTES-DE-CONTROL.
+
            MOVE 'N' TO fin
            READ ARCH-NOT AT END MOVE 'S' TO fin
            END-READ
@@ -178,8 +182,8 @@
                "*******************"
                DISPLAY TITULO-P1
                DISPLAY TITULO-P2
-               DISPLAY "**********************************************"
-               "********************"
+               DISPLAY "***********************************************"
+               "*******************"
 
                PERFORM UNTIL NOT-NRO-ALUMNO not EQUAL wss-nroAlumActual
                OR FIN = 'S'
@@ -262,6 +266,7 @@
            CLOSE ARCH-ALU
            IF NOT wss-fs-alu-OK then
                display "error al  cerrar el archivo"
+               PERFORM 6000-CERRAR-PROGRAMA
            END-IF.
 
       *-----------------------------------------------------------------
@@ -270,7 +275,13 @@
            CLOSE ARCH-NOT
            IF NOT wss-fs-not-OK then
                display "error al  cerrar el archivo"
+               PERFORM 6000-CERRAR-PROGRAMA
            END-IF.
-
+               
+      *-----------------------------------------------------------------
+       
+       6000-CERRAR-PROGRAMA.
+           STOP RUN.
+           
       *-----------------------------------------------------------------
            END PROGRAM PLISNOTA.
