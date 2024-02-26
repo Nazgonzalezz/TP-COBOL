@@ -44,7 +44,7 @@
            PERFORM 3000-INGRE-DESCRIP-Y-CARG-ARCH UNTIL
                        wss-codigMateria = "FF"
            PERFORM 4000-CERRAR-ARCHIVO
-       STOP RUN.
+           PERFORM 5000-CERRAR-PROGRAMA.
 
       */////////////////////////////////////////////////////////////////
 
@@ -52,6 +52,7 @@
            OPEN OUTPUT  ARCH-MAT.
            IF NOT wss-fs-mat-OK then
                display "error al abrir el archivo"
+               PERFORM 5000-CERRAR-PROGRAMA
            END-IF.
 
       *-----------------------------------------------------------------
@@ -84,6 +85,8 @@
            WRITE REG-MAT FROM WSS-REG-MAT
            IF NOT wss-fs-mat-OK then
                display "error al  escribir el archivo"
+               PERFORM 4000-CERRAR-ARCHIVO
+               PERFORM 5000-CERRAR-PROGRAMA
            END-IF
            PERFORM 2000-INGRESAR-CODI-MAT-VALIDADO UNTIL FLAG = 1.
 
@@ -93,7 +96,13 @@
            CLOSE ARCH-MAT
            IF NOT wss-fs-mat-OK then
                display "error al  cerrar el archivo"
+               PERFORM 5000-CERRAR-PROGRAMA
            END-IF.
 
+      *-----------------------------------------------------------------
+
+      5000-CERRAR-PROGRAMA.
+           STOP RUN.
+      
       *-----------------------------------------------------------------
        END PROGRAM PGENMATE.
