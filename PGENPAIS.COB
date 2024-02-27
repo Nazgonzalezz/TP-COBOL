@@ -1,6 +1,6 @@
       ******************************************************************
       * Author: Gonzalez Nazarena Araceli
-      * Date:
+      * Date: 12/2023
       * Purpose: Programa que genera el archivo "NACIONALIDAD.dat" con
       *    los datos que se ingresan por teclado validados
       * Tectonics: cobc
@@ -42,7 +42,7 @@
            PERFORM 2000-INGRESAR-CODI-NAC-VALIDADO
            PERFORM 3000-INGRE-DESCRIP-Y-CARG-ARCH
            PERFORM 4000-CERRAR-ARCHIVO
-       STOP RUN.
+           PERFORM 5000-CERRAR-PROGRAMA.
 
       */////////////////////////////////////////////////////////////////
 
@@ -50,6 +50,7 @@
            OPEN OUTPUT  ARCH-NAC
            IF NOT wss-fs-nac-OK then
                display "error al abrir el archivo"
+               PERFORM 5000-CERRAR-PROGRAMA
            END-IF.
 
       *-----------------------------------------------------------------
@@ -88,6 +89,8 @@
                WRITE REG-NAC FROM WSS-REG-NAC
                IF NOT wss-fs-nac-OK then
                    display "error al  escribir el archivo"
+                   PERFORM 4000-CERRAR-ARCHIVO
+                   PERFORM 5000-CERRAR-PROGRAMA
                END-IF
                PERFORM 2000-INGRESAR-CODI-NAC-VALIDADO UNTIL FLAG = 1
            END-PERFORM.
@@ -98,7 +101,13 @@
            CLOSE ARCH-NAC
            IF NOT wss-fs-nac-OK then
                display "error al  cerrar el archivo"
+               PERFORM 5000-CERRAR-PROGRAMA
            END-IF.
 
+      *-----------------------------------------------------------------
+
+       5000-CERRAR-PROGRAMA.
+           STOP RUN.
+       
       *-----------------------------------------------------------------
        END PROGRAM PGENMATE.
